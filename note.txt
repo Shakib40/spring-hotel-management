@@ -1,0 +1,73 @@
+https://whimsical.com/roadmaps-5HgxiERBYrj3meNyRhC6KS
+
+
+
+http://localhost:9090/swagger-ui/index.html
+
+#USER
+
+username
+firstname
+lastname
+email
+password
+phone_number
+role, SUPER_ADMIN, ADMIN, GUEST, SUPER_ACCOUNTANT, ADMIN_ACCOUNTANT, RECEPTIONIST
+
+
+
+Login as  ADMIN for Hotel Management
+this ADMIN will create ADMIN_ACCOUNTANT,  GUEST, those who are visiting to his hotel
+
+
+#HOTEL
+userRefId,
+name
+description
+pictures [{
+ type: ''
+  description: ''
+  pic: []
+}] // not using as of now
+
+location  {
+  latitude,
+  longitude
+}
+
+
+
+#ROOM
+hotelRefId
+floor, 1,2,3
+room_number, 1,2,3,4,5
+availability, true, false
+roomType, single, double
+pricePerDay
+features : ["", ""]
+pictures [{
+ type: ''
+  description: ''
+  pic: []
+}]
+
+
+#booking,
+hotelRefId
+roomRefId, []
+userRefId,
+checkin, date-time,
+checkout, date-time,
+totalPrice,
+gst_includes
+other_charges
+billed, true, false
+
+
+
+For Subscription based login & register
+
+#payment
+
+
+
