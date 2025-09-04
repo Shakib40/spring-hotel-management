@@ -44,12 +44,12 @@ room_number, 1,2,3,4,5
 availability, true, false
 roomType, single, double
 pricePerDay
-features : ["", ""]
+features : ["", ""] // not using as of now
 pictures [{
  type: ''
   description: ''
   pic: []
-}]
+}] // not using as of now
 
 
 #booking,

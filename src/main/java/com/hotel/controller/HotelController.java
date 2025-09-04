@@ -27,7 +27,6 @@ public class HotelController {
         return ResponseEntity.ok(hotelService.createHotel(request));
     }
 
-//    @PreAuthorize("hasAnyAuthority('SUPER_ADMIN', 'ADMIN')")
     @PreAuthorize("hasAuthority('SUPER_ADMIN')")
     @GetMapping
     public ResponseEntity<List<HotelResponse>> getAllHotels() {
