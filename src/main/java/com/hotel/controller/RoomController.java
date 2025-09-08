@@ -22,11 +22,6 @@ public class RoomController {
         return ResponseEntity.ok(roomService.createRoom(requestRoom));
     }
 
-    // ✅ Get all rooms
-    @GetMapping("/list")
-    public ResponseEntity<List<Room>> getAllRooms() {
-        return ResponseEntity.ok(roomService.getAllRooms());
-    }
 
     // ✅ Get available rooms by hotel
     @GetMapping("/available/{hotelRefId}")
@@ -34,12 +29,8 @@ public class RoomController {
         return ResponseEntity.ok(roomService.getAvailableRoomsByHotel(hotelRefId));
     }
 
-    // ✅ Check if room exists
-    @GetMapping("/exists")
-    public ResponseEntity<Boolean> roomExists(
-            @RequestParam String hotelRefId,
-            @RequestParam Integer floor,
-            @RequestParam Integer roomNumber) {
-        return ResponseEntity.ok(roomService.roomExists(hotelRefId, floor, roomNumber));
-    }
+    // 1. Upload Rooms for Hotel using Excel Sheet, Bulk Upload
+    // 2. All Rooms of Hotel, In ASC Order, Like Floor 1, Room 101, 102, 103, Floor 2, Room 101, 102, 103
+    // 3.
+
 }

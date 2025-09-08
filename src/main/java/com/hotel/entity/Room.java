@@ -12,12 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "rooms",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"hotel_ref_id", "floor", "room_number"})
-        }
-)
+@Table( name = "rooms", uniqueConstraints = { @UniqueConstraint(columnNames = {"hotel_ref_id", "floor", "room_number"})})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

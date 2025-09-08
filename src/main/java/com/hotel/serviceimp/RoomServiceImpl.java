@@ -5,7 +5,6 @@ import com.hotel.repository.RoomRepository;
 import com.hotel.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -17,10 +16,9 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public Room createRoom(RequestRoom requestRoom) {
         // Prevent duplicate room in same hotel & floor
-        System.out.println("HELLO Word");
-        if (roomRepository.existsByHotelRefIdAndFloorAndRoomNumber(requestRoom.getHotelRefId(), requestRoom.getFloor(), requestRoom.getRoomNumber())) {
-//            throw new IllegalArgumentException("Room already exists for this hotel & floor");
-             throw  new RuntimeException("Room already exists for this hotel & floor");
+
+        if (roomRepository.existsRoom(requestRoom.getHotelRefId(), requestRoom.getFloor(), requestRoom.getRoomNumber())) {
+            throw new IllegalArgumentException("Room already exists for this hotel & floor");
         }
 
         // ✅ Map DTO → Entity
@@ -31,15 +29,11 @@ public class RoomServiceImpl implements RoomService {
         room.setAvailability(requestRoom.getAvailability() != null ? requestRoom.getAvailability() : true);
         room.setRoomType(requestRoom.getRoomType());
         room.setPricePerDay(requestRoom.getPricePerDay());
+//        room.setRoomType(Room.RoomType.valueOf(requestRoom.getRoomType()));
+//        room.setPricePerDay(BigDecimal.valueOf(requestRoom.getPricePerDay()));
 
         // ✅ Save entity
         return roomRepository.save(room);
-    }
-
-
-    @Override
-    public List<Room> getAllRooms() {
-        return roomRepository.findAll();
     }
 
     @Override
@@ -47,8 +41,4 @@ public class RoomServiceImpl implements RoomService {
         return roomRepository.findByHotelRefIdAndAvailabilityTrue(hotelRefId);
     }
 
-    @Override
-    public boolean roomExists(String hotelRefId, Integer floor, Integer roomNumber) {
-        return roomRepository.existsByHotelRefIdAndFloorAndRoomNumber(hotelRefId, floor, roomNumber);
-    }
 }
