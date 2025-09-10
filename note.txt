@@ -54,20 +54,23 @@ pictures [{
 
 #booking,
 hotelRefId
-roomRefId, []
-userRefId,
+paymentRefId,
+roomRefId, [] // can have multiple room
+userRefId, // he will be userType guest
 checkin, date-time,
 checkout, date-time,
 totalPrice,
 gst_includes
 other_charges
-billed, true, false
-
 
 
 For Subscription based login & register
-
 #payment
 
 
 
+
+
+1.Payment Gateway
+2. Email
+3. Notification

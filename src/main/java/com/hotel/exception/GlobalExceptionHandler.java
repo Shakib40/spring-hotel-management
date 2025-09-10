@@ -98,4 +98,18 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
+//    // Handle duplicate resource (like one user = one hotel)
+//    @ExceptionHandler(DuplicateResourceException.class)
+//    public ResponseEntity<ErrorResponse> handleDuplicateResource(DuplicateResourceException ex,
+//                                                                 HttpServletRequest request) {
+//        ErrorResponse response = ErrorResponse.builder()
+//                .success(false)
+//                .message(ex.getMessage()) // comes from service layer
+//                .path(request.getRequestURI())
+//                .error("DuplicateResourceException")
+//                .build();
+//
+//        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+//    }
 }

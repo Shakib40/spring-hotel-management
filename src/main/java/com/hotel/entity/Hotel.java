@@ -6,7 +6,6 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
 
 @Entity
 @Table(name = "hotels")
@@ -23,7 +22,7 @@ public class Hotel {
     private String id;
 
     @NotBlank(message = "User reference ID is required")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String userRefId;
 
     @NotBlank(message = "Hotel name is required")

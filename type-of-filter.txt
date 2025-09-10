@@ -1,0 +1,74 @@
+✅ Summary of filter types you can use in Spring Data JPA:
+
+#1. Derived Query Methods → based on method name
+
+// Equality filter
+List<Room> findByHotelRefId(String hotelRefId);
+
+// Boolean filter
+List<Room> findByHotelRefIdAndAvailabilityTrue(String hotelRefId);
+List<Room> findByHotelRefIdAndAvailabilityFalse(String hotelRefId);
+
+// Greater/Less filter
+List<Room> findByPricePerNightGreaterThan(Double price);
+List<Room> findByFloorLessThanEqual(Integer floor);
+
+// Between filter
+List<Room> findByPricePerNightBetween(Double min, Double max);
+
+// Like / Contains filter
+List<Room> findByRoomTypeContaining(String keyword);  // LIKE %keyword%
+
+
+#2. JPQL @Query → object-oriented query
+
+@Query("SELECT r FROM Room r WHERE r.hotelRefId = :hotelRefId AND r.availability = true")
+List<Room> findAvailableRooms(@Param("hotelRefId") String hotelRefId);
+
+@Query("SELECT r FROM Room r WHERE r.pricePerNight BETWEEN :min AND :max")
+List<Room> findRoomsByPriceRange(@Param("min") Double min, @Param("max") Double max);
+
+
+
+#3. Native SQL @Query → raw SQL query
+
+@Query(value = "SELECT * FROM rooms WHERE hotel_ref_id = :hotelRefId AND availability = true",
+       nativeQuery = true)
+List<Room> findAvailableRoomsNative(@Param("hotelRefId") String hotelRefId);
+
+
+#4. Query by Example (QBE) → entity as filter
+
+Room probe = new Room();
+probe.setHotelRefId("H123");
+probe.setAvailability(true);
+
+Example<Room> example = Example.of(probe);
+List<Room> rooms = roomRepository.findAll(example);
+
+
+
+#5. Specifications (Criteria API) → flexible & dynamic filters
+
+public class RoomSpecs {
+    public static Specification<Room> hasHotelRefId(String hotelRefId) {
+        return (root, query, cb) -> cb.equal(root.get("hotelRefId"), hotelRefId);
+    }
+
+    public static Specification<Room> isAvailable() {
+        return (root, query, cb) -> cb.isTrue(root.get("availability"));
+    }
+}
+
+List<Room> rooms = roomRepository.findAll(
+    Specification.where(RoomSpecs.hasHotelRefId("H123"))
+                 .and(RoomSpecs.isAvailable())
+);
+
+#6. Pagination + Sorting → filters with page and order
+
+
+Page<Room> findByHotelRefIdAndAvailabilityTrue(String hotelRefId, Pageable pageable);
+
+PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("pricePerNight").ascending());
+Page<Room> rooms = roomRepository.findByHotelRefIdAndAvailabilityTrue("H123", pageRequest);

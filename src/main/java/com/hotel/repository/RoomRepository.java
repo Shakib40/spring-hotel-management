@@ -20,4 +20,6 @@ public interface RoomRepository extends JpaRepository<Room, String> {
                    @Param("roomNumber") Integer roomNumber);
 
     List<Room> findByHotelRefIdAndAvailabilityTrue(String hotelRefId);
+
+    List<Room> findByHotelRefIdAndAvailabilityFalse(String hotelRefId);
 }

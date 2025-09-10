@@ -47,6 +47,7 @@ public class Room {
     @Column(nullable = false)
     private Boolean availability;
 
+
     @NotNull(message = "Room type is required")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "CHAR(36)", length = 20)

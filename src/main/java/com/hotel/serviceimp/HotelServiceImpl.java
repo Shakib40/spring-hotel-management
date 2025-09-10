@@ -20,9 +20,16 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public HotelResponse createHotel(HotelRequest request) {
+
+        // Check if this user already has a hotel
+        if (hotelRepository.existsByUserRefId(request.getUserRefId())) {
+            throw new RuntimeException("You already have one hotel");
+        }
+
         if (hotelRepository.existsByName(request.getName())) {
             throw new RuntimeException("Hotel with this name already exists");
         }
+
 
         Hotel hotel = Hotel.builder()
                 .userRefId(request.getUserRefId())
