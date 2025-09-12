@@ -71,6 +71,17 @@ For Subscription based login & register
 
 
 
+1.Spring Web
+2.Spring JPA -- MYSQL
+3.JWT
+4.LOMBOKRk
+
+5.AWS- S3
+6.EMAIL
+
+
+
 1.Payment Gateway
 2. Email
 3. Notification
+4. OAUTH
