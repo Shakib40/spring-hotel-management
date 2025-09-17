@@ -7,5 +7,10 @@ import com.hotel.dto.RegisterResponse;
 
 public interface AuthService {
     RegisterResponse register(RegisterRequest request);
+
     LoginResponse login(LoginRequest request);
+
+    LoginResponse refreshToken(String refreshToken);
+
+    void logout(String accessToken, String refreshToken);  // ✅ new
 }

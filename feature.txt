@@ -1,0 +1,33 @@
+#Cloud
+AWS (S3, Lambda)
+AZURE
+
+
+#Auth
+JWT
+OAUTH
+Redis for Token & Session, Caching
+
+
+#Notification
+1. Email Notification (via SMTP or services like Gmail, AWS SES, SendGrid).
+2. SMS Notification (via Twilio, Nexmo, AWS SNS).
+3. Push Notifications (for mobile/web using Firebase FCM or Web Push).
+4. In-App Notifications (database + WebSocket/Server-Sent Events to show real-time alerts in UI).
+5. System Notifications (logs, monitoring, alerts).
+
+
+#Redis
+1. JWT
+2. session
+3. Caching
+
+Payment
+1. Razorpay
+2. Stripe
+3. PayPal
+
+Database
+1. MySQL
+2. Redis
+3. Mongodb

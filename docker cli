@@ -1,0 +1,15 @@
+
+
+docker ps
+docker run --name redis -p 6379:6379 -d redis
+docker exec -it redis redis-cli
+
+
+#REDIS
+
+ping
+keys *
+get TOKEN:550e8400-e29b-41d4-a716-446655440010
+ttl TOKEN:550e8400-e29b-41d4-a716-446655440010
+keys access:*
+keys refresh:*

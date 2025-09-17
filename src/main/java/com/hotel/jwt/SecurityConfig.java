@@ -36,11 +36,6 @@ public class SecurityConfig {
                                         "/v3/api-docs/**"
                                 ).permitAll()
 
-                        // Role-based access
-//                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-//                        .requestMatchers("/api/super/**").hasRole("SUPER_ADMIN")
-//                        .requestMatchers("/api/accountant/**").hasRole("ACCOUNTANT")
-//                        .requestMatchers("/api/guest/**").hasRole("GUEST")
 
                         .anyRequest().authenticated()
                 )

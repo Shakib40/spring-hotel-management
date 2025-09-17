@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -36,25 +37,26 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
             try {
                 if (jwtUtil.validateToken(token)) {
-                    String username = jwtUtil.extractUsername(token);
+                    // ✅ Extract userId (not username)
+                    Long userId = Long.parseLong(jwtUtil.extractUserId(token));
 
-                    User user = userRepository.findAll().stream()
-                            .filter(u -> u.getUsername().equals(username))
-                            .findFirst()
-                            .orElse(null);
+                    Optional<User> userOpt = userRepository.findById(String.valueOf(userId));
 
-                    if (user != null) {
-                         UsernamePasswordAuthenticationToken authentication =
+                    if (userOpt.isPresent()) {
+                        User user = userOpt.get();
+
+                        UsernamePasswordAuthenticationToken authentication =
                                 new UsernamePasswordAuthenticationToken(
                                         user,
                                         null,
-                                        List.of(new SimpleGrantedAuthority(user.getRole().name())) // ✅ add role
+                                        List.of(new SimpleGrantedAuthority(user.getRole().name())) // ✅ attach role
                                 );
+
                         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                         SecurityContextHolder.getContext().setAuthentication(authentication);
                     }
                 }
-            } catch (JwtException e) {
+            } catch (JwtException | NumberFormatException e) {
                 System.out.println("❌ Invalid JWT: " + e.getMessage());
             }
         }

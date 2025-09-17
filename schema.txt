@@ -1,8 +1,12 @@
 https://whimsical.com/roadmaps-5HgxiERBYrj3meNyRhC6KS
-
 https://dbdiagram.io/d
-
 http://localhost:9090/swagger-ui/index.html
+
+
+AWS
+
+Patna@909090
+
 
 #USER
 
@@ -64,24 +68,8 @@ gst_includes
 other_charges
 
 
-For Subscription based login & register
-#payment
 
 
 
 
 
-1.Spring Web
-2.Spring JPA -- MYSQL
-3.JWT
-4.LOMBOKRk
-
-5.AWS- S3
-6.EMAIL
-
-
-
-1.Payment Gateway
-2. Email
-3. Notification
-4. OAUTH
