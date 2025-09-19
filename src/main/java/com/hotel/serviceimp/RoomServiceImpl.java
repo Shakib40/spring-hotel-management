@@ -85,7 +85,6 @@ public class RoomServiceImpl implements RoomService {
                         throw new IllegalArgumentException("Duplicate room detected: Floor " +
                                 room.getFloor() + ", Room " + room.getRoomNumber());
                     }
-                    System.out.println("roomroomroom" + room);
 
                     //Note. Here we will take HotelRefId from token. Like from userRef we will fetch hotelRef, only one Hotel should have to user
 //                    roomRepository.save(room);

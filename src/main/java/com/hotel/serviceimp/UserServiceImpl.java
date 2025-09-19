@@ -17,8 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(String id) {
-        System.out.println("String"+ id);
-        return userRepository.findById(id)
+         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("❌ User not found with id: " + id));
     }
 

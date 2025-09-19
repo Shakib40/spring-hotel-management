@@ -52,8 +52,6 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public LoginResponse login(LoginRequest request) {
 
-        System.out.println("HELLLOO" + request);
-
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new RuntimeException("❌ Invalid username or password"));
 
@@ -64,9 +62,6 @@ public class AuthServiceImpl implements AuthService {
         // Generate tokens using userId
         String accessToken = jwtUtil.generateAccessToken(user.getId());
         String refreshToken = jwtUtil.generateRefreshToken(user.getId());
-
-        System.out.println("accessToken" + accessToken);
-        System.out.println("refreshToken" + refreshToken);
 
 
         // Store in Redis using TokenStoreService

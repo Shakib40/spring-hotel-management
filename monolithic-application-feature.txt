@@ -1,4 +1,4 @@
-1. Java Fundamentals (Pre-requisite)
+1. Java Fundamentals (Pre-requisite) // DONE
 Before diving deep into Spring Boot:
 OOP (Encapsulation, Inheritance, Polymorphism, Abstraction)
 Collections (List, Set, Map)
@@ -9,16 +9,8 @@ Multithreading Basics
 Java 8+ Features (Optional, Streams, Optional, LocalDate, etc.)
 
 
-2. Spring Boot Basics
-What is Monolith vs Microservices
-Spring Boot Starter dependencies
-application.properties vs application.yml
-Profiles: dev, test, prod
-Application lifecycle (@SpringBootApplication, beans initialization)
-Dependency Injection: Constructor vs Field vs Setter injection
 
-
-3. REST API Development
+3. REST API Development // // DONE
 @RestController, @GetMapping, @PostMapping, etc.
 Path variables vs request params
 Request body vs response body
@@ -40,11 +32,13 @@ Custom queries with @Query (JPQL & native SQL)
 Paging & Sorting (Pageable)
 Transactions (@Transactional)
 
+
 5. Business Logic Layer
 Service Layer with @Service
 Mapping Entities ↔ DTOs (manual or MapStruct)
 Utility classes for clean code
 Proper layering (Controller → Service → Repository)
+
 
 6. Security
 Spring Security basics
